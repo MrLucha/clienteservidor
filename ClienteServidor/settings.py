@@ -25,7 +25,7 @@ SECRET_KEY = '820!y+7_762v=^3$4jx59%uym84yto-gvpx0l)l6)+qbe3*@=4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [clienteservidorchido.herokuapp.com]
+ALLOWED_HOSTS = ['clienteservidorchido.herokuapp.com']
 
 
 # Application definition
