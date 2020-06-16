@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'Login',
     'Example1',
+    'Example2',
 ]
 
 SITE_ID=1
@@ -79,11 +80,6 @@ MIDDLEWARE = [
 ]
 
 #Integracion de las vistas
-# MIDDLEWARE_CLASSES = (
-#     # Simplified static file serving.
-#     # https://warehouse.python.org/project/whitenoise/
-#     'whitenoise.middleware.WhiteNoiseMiddleware',
-# )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
