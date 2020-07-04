@@ -27,3 +27,40 @@ class ExampleList(APIView):
             serializer.save()
             datas=serializer.data
             return Response(datas)
+
+class ExampleDetail(APIView):
+    def get_object(self,id):
+        try:
+            return ExampleModel.objects.get(pk=id)
+        except ExampleModel.DoesNotExist:
+            return 404
+
+    def get(self,request,id,format=None):
+        print("GET Detail")
+        example1=self.get_object(id)
+        if example1==404:
+            return Response("No existen datos")
+        serializer=Example1Serializer(example1)
+        return Response(serializer.data)
+
+
+class ExampleUpdate(APIView):
+    def get_object(self,id):
+        try:
+            return ExampleModel.objects.get(pk=id)
+        except ExampleModel.DoesNotExist:
+            return 404
+
+    def put(self,request,id,format=None):
+        try:
+            model=ExampleModel.objects.get(pk=id)
+        except ExampleModel.DoesNotExist:
+            return Response(f'Usuario con el id {id} no existe')
+        #example1=self.get_object(id)
+        serializer=Example1Serializer(model,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas=serializer.data
+            return Response(datas)
+        return Response(serializer.errors)
+        
