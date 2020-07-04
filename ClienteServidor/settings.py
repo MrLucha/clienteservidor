@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'Login',
     'Example1',
     'Example2',
+    'Register',
 ]
 
 SITE_ID=1
@@ -112,10 +114,10 @@ WSGI_APPLICATION = 'ClienteServidor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dfkrj3h6sm7kvl',
-        'USER':'jwywomlwycrmnx',
-        'PASSWORD':'98d96d4e1889ffba86378e5d95bd268a8dd04c327c99b6242b2c5e3be5ed2633',
-        'HOST':'ec2-35-174-127-63.compute-1.amazonaws.com',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
         'PORT':'5432'
     }
 }
